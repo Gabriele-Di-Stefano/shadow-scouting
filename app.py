@@ -52,7 +52,7 @@ with st.expander("Come funziona"):
     st.markdown(
         "1. **Fase 1** – Sparse K-Means con penalizzazione Lasso sui 75 Top Player (25 per reparto) identifica gli "
         "archetipi tattici e i pesi delle variabili discriminanti.\n"
-        "2. **Fase 2** – I giovani Under-22 vengono proiettati negli archetipi con un Weighted KNN pseudo-supervisionato.\n"
+        "2. **Fase 2** – Ogni giovane Under-22 viene assegnato a un archetipo con un K-Nearest Neighbors (k = 1) rispetto ai Top.\n"
         "3. **Fase 3** – Dentro lo stesso archetipo, la **distanza euclidea ponderata** (pesi Lasso) ordina i giovani: "
         "il Rank 1 è lo *Shadow Match*. Un Top è un **Unicorno** se la distanza del suo Rank 1 supera Q3 + 1.5·IQR "
         "dei Rank 1 del suo archetipo."
@@ -96,7 +96,7 @@ table = pd.DataFrame({
     "Minuti": m["u22_minutes"].values,
     "Distanza": m["distance"].round(2).values,
 })
-st.dataframe(table, hide_index=True, use_container_width=True)
+st.dataframe(table, hide_index=True)
 
 # ---------- radar ----------
 st.subheader("Confronto di profilo")
@@ -106,5 +106,5 @@ fig = radar_compare(radar, int(top["top_id"]), int(row["u22_id"]), top["position
 if fig is not None:
     left, _ = st.columns([1, 1])
     left.pyplot(fig)
-    st.caption("Le otto variabili con peso Lasso più alto del reparto, in deviazioni standard rispetto ai Top "
-               "dello stesso reparto (valori troncati a ±3σ).")
+    st.caption("Le otto variabili con peso Lasso più alto del reparto, in deviazioni standard rispetto alla media "
+               "di Top e Under-22 del reparto (valori troncati a ±3σ).")
