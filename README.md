@@ -1,10 +1,30 @@
-# Shadow Scouting nel Calcio Moderno
+# ⚽ Shadow Scouting nel Calcio Moderno
 
-**🔗 App online:** [shadow-scouting.streamlit.app](https://shadow-scouting-abzfjn2upcxs7tzwtxexsc.streamlit.app/)
+**👉 [Prova l'app online](https://shadow-scouting-abzfjn2upcxs7tzwtxexsc.streamlit.app/)**
 
-App Streamlit che automatizza la tesi di laurea (Università di Milano-Bicocca) sul clustering di calciatori
-Top e Under-22. Scegli uno dei 75 Top Player e ottieni i giovani più simili nello stesso archetipo tattico.
+![Giovani più vicini a Erling Haaland](docs/img/app_tabella.png)
 
+Dato un calciatore d'élite, l'app trova i giovani Under-22 con il **profilo di gioco statisticamente più simile**,
+usando i dati Fbref/Opta della stagione 2023/24. Nasce dalla mia tesi di laurea in Statistica
+(Università di Milano-Bicocca) ed è pensata come strumento di supporto allo scouting, non come sostituto dell'occhio dello scout.
+
+**Esempio.** Per Erling Haaland (Manchester City, archetipo «Rapaci d'Area») i giovani più vicini sono
+Ali Al Hamadi (Ipswich Town, 21 anni), Nikola Štulić (Charleroi) e Romeo Vermant (Westerlo).
+
+![Confronto di profilo](docs/img/app_radar.png)
+
+## Come funziona, in breve
+1. I 75 Top Player vengono raggruppati in **archetipi tattici** (es. «Rapaci d'Area») con un clustering che sceglie da solo le statistiche più discriminanti.
+2. Ogni Under-22 viene assegnato all'archetipo a cui somiglia di più.
+3. Dentro lo stesso archetipo, i giovani sono ordinati per **distanza** dal Top Player scelto: più è bassa, più il profilo è simile.
+
+## Limiti
+- Si parte da una sola stagione (2023/24) e da 75 Top Player; la ricerca nell'app è limitata a loro.
+- I portieri non sono ancora inclusi.
+- La somiglianza statistica non misura qualità, potenziale o adattamento al club: è un punto di partenza per l'analisi video.
+
+## Autore
+Gabriele Di Stefano · [LinkedIn](INSERISCI-IL-TUO-LINK) · [GitHub](https://github.com/Gabriele-Di-Stefano)
 ## Pipeline
 1. **Fase 1** – archetipi d'élite e pesi Lasso (Sparse K-Means, Gap Statistic) sui 75 Top Player.
 2. **Fase 2** – assegnazione degli Under-22 agli archetipi. Metodo predefinito `original`: 1-NN con selezione Lasso (pesi 0/1) sui Top
