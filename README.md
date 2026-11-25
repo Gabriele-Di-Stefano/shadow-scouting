@@ -19,12 +19,22 @@ Ali Al Hamadi (Ipswich Town, 21 anni), Nikola Štulić (Charleroi) e Romeo Verma
 3. Dentro lo stesso archetipo, i giovani sono ordinati per **distanza** dal Top Player scelto: più è bassa, più il profilo è simile.
 
 ## Limiti
-- Si parte da una sola stagione (2023/24) e da 75 Top Player; la ricerca nell'app è limitata a loro.
-- I portieri non sono ancora inclusi.
-- La somiglianza statistica non misura qualità, potenziale o adattamento al club: è un punto di partenza per l'analisi video.
+- **Nessun coefficiente di campionato.** I 75 Top Player provengono dai cinque maggiori campionati europei
+  (i primi 5 per ruolo di ciascun campionato, secondo le valutazioni Sofascore). Il confronto è pienamente
+  affidabile solo con i giovani di quegli stessi campionati: un giovane di un campionato meno competitivo può
+  risultare statisticamente vicino a un Top a prescindere dalla distanza, perché le statistiche non sono
+  pesate per il livello della lega.
+- **Nessun filtro sui minuti per default.** Per non restringere la ricerca, i giovani con pochi minuti
+  restano tra i risultati. Le statistiche su campioni piccoli sono meno stabili: nell'app il filtro
+  «Minuti minimi giocati» permette di alzare la soglia, e i minuti sono sempre visibili in tabella.
+- **Una sola stagione (2023/24) e 75 Top Player**; la ricerca nell'app è limitata a loro.
+- **Portieri non ancora inclusi.**
+- La somiglianza statistica non misura qualità, potenziale o adattamento al club: è un punto di partenza
+  per l'analisi video, non un verdetto.
 
 ## Autore
 Gabriele Di Stefano · [LinkedIn](INSERISCI-IL-TUO-LINK) · [GitHub](https://github.com/Gabriele-Di-Stefano)
+
 ## Pipeline
 1. **Fase 1** – archetipi d'élite e pesi Lasso (Sparse K-Means, Gap Statistic) sui 75 Top Player.
 2. **Fase 2** – assegnazione degli Under-22 agli archetipi. Metodo predefinito `original`: 1-NN con selezione Lasso (pesi 0/1) sui Top
